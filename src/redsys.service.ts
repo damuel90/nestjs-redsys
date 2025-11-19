@@ -44,6 +44,7 @@ export class RedsysService {
       DS_MERCHANT_AMOUNT: body.amount * 100,
       DS_MERCHANT_MERCHANTURL: this.config.webhookUrl,
       DS_MERCHANT_P2F_XMLDATA: `<nombreComprador>${body.customerFullName}</nombreComprador><subjectMailCliente>${body.title}</subjectMailCliente>`,
+      DS_MERCHANT_PRODUCTDESCRIPTION: body.title,
     };
 
     if (body?.customerEmail) {

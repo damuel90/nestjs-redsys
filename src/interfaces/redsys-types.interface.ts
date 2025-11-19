@@ -18,6 +18,24 @@ export interface RedsysMerchantParameters {
   DS_MERCHANT_P2F_XMLDATA?: string;
   DS_MERCHANT_CUSTOMER_MAIL?: string;
   DS_MERCHANT_CUSTOMER_MOBILE?: string;
+  DS_MERCHANT_PRODUCTDESCRIPTION?: string;
+  DS_MERCHANT_COF_INI?: "S" | "N";
+  DS_MERCHANT_COF_TYPE?: "I" | "R" | "H" | "E" | "D" | "M" | "N" | "C";
+  DS_MERCHANT_CONSUMERLANGUAGE?: string;
+  DS_MERCHANT_DIRECTPAYMENT?: "true" | "MOTO";
+  DS_MERCHANT_GROUP?: string;
+  DS_MERCHANT_IDENTIFIER?: string;
+  DS_MERCHANT_MERCHANTDATA?: string;
+  DS_MERCHANT_MERCHANTNAME?: string;
+  DS_MERCHANT_TITULAR?: string;
+  DS_MERCHANT_URLKO?: string;
+  DS_MERCHANT_URLOK?: string;
+  DS_MERCHANT_SHIPPINGADDRESSPYP?: string;
+  DS_MERCHANT_MERCHANTDESCRIPTOR?: string;
+  DS_MERCHANT_PERSOCODE?: string;
+  DS_MERCHANT_P2F_EXPIRYDATE?: number | string;
+  DS_MERCHANT_CUSTOMER_SMS_TEXT?: string;
+  DS_MERCHANT_CLIENTIP?: string;
 }
 
 export interface RedsysEncodeResponse {
