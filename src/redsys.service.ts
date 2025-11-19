@@ -180,7 +180,7 @@ export class RedsysService {
    * @param {RedsysEncodeResponse} response JSON response from Redsys
    * @returns {RedsysDecodeResponse} Object with the decoded data
    */
-  private decodeResponse<T>(
+  decodeResponse<T>(
     response: RedsysEncodeResponse
   ): RedsysDecodeResponse<T> {
     const merchantParamsJSON = Buffer.from(
