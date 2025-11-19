@@ -1,6 +1,6 @@
 {
   "name": "@damuel90/nestjs-redsys",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "NestJS module for Redsys payment gateway integration with multiple bank support",
   "keywords": [
     "nestjs",
