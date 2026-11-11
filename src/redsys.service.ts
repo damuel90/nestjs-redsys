@@ -41,7 +41,8 @@ export class RedsysService {
       DS_MERCHANT_TERMINAL: this.config.terminal,
       DS_MERCHANT_CURRENCY: this.getCurrencyIso4217(body.currencyCode),
       DS_MERCHANT_TRANSACTIONTYPE: "F",
-      DS_MERCHANT_AMOUNT: body.amount * 100,
+      // Redsys exige céntimos enteros: 1057.34 * 100 = 105733.99999999999 en coma flotante
+      DS_MERCHANT_AMOUNT: Math.round(body.amount * 100),
       DS_MERCHANT_MERCHANTURL: this.config.webhookUrl,
       DS_MERCHANT_P2F_XMLDATA: `<nombreComprador>${body.customerFullName}</nombreComprador><subjectMailCliente>${body.title}</subjectMailCliente>`,
       DS_MERCHANT_PRODUCTDESCRIPTION: body.title,
@@ -80,6 +81,15 @@ export class RedsysService {
       if (response.status !== 200) {
         throw new BadRequestException(
           `${this.config.bankName} error ${response.status}: ${JSON.stringify(
+            response.data
+          )}`
+        );
+      }
+
+      // Ante un rechazo, Redsys responde 200 sin Ds_MerchantParameters (trae un errorCode SIS en su lugar)
+      if (!response.data?.Ds_MerchantParameters) {
+        throw new BadRequestException(
+          `Respuesta sin parámetros de ${this.config.bankName}: ${JSON.stringify(
             response.data
           )}`
         );
